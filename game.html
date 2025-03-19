@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ - Programação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Camada semitransparente -->
+    <div id="overlay"></div>
+
+    <div id="container">
+        <h1>Selecione a Categoria e Dificuldade</h1>
+
+        <!-- Menu de seleção de categoria e dificuldade -->
+        <div class="menu">
+            <h2>Selecione sua categoria e dificuldade</h2>
+
+            <div class="select-menu">
+                <label for="category">Categoria:</label>
+                <select id="category" class="select-option">
+                    <option value="html">HTML</option>
+                    <option value="java">Java</option>
+                    <option value="python">Python</option>
+                    <option value="javascript">JavaScript</option>
+                </select>
+            </div>
+
+            <div class="select-menu">
+                <label for="difficulty">Dificuldade:</label>
+                <select id="difficulty" class="select-option">
+                    <option value="easy">Fácil</option>
+                    <option value="medium">Médio</option>
+                    <option value="hard">Difícil</option>
+                </select>
+            </div>
+
+            <div class="start-button-container">
+                <button class="start-game-btn">Iniciar Jogo</button>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
