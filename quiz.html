@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QUIZ - Jogo</title>
+    <style>
+        /* Estilo geral */
+        body {
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #000000;
+            color: white;
+        }
+
+
+        /* Overlay */
+        #overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 5;
+        }
+
+        /* Navbar */
+        #navbar {
+            width: 100%;
+            background-color: #000000;
+            padding: 20px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);         
+}
+
+
+        #navbar .nav-content {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            align-items: center;
+            padding-right: 35px; /* Ajustando o padding na nav-content */
+}
+
+        /* Div do usuário */
+        .user-info {
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            font-size: 1.2rem;
+        }
+
+        #user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid #ffffff;
+        }
+
+       /* Div de informações do jogo */
+.game-info {
+    display: flex;
+    gap: 30px;
+    color: #ffffff;
+    font-size: 1.2rem; /* Aumentei o tamanho da fonte aqui */
+    margin-right: 20px; /* Aumentando o afastamento da borda direita */
+}
+
+.game-info span {
+    font-weight: 500;
+}
+
+
+        /* Contador de tempo */
+        #timer {
+            position: fixed;
+            top: 100px; /* Logo abaixo da navbar */
+            right: 30px;
+            background-color: rgba(45, 45, 45, 0.718);
+            color: white;
+            font-size: 1.5rem;
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+        }
+        
+
+        /* Container do Quiz */
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Estilização do título */
+        h1 {
+            font-size: 2rem;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px #c300ffc8;
+        }
+
+        /* Quiz Container */
+        .quiz-container {
+            background: rgba(45, 45, 45, 0.95);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+        }
+
+        /* Pergunta */
+        .question-box {
+            margin-bottom: 20px;
+        }
+
+        .question-text {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Respostas */
+        .answers-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .answer {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .answer:hover {
+            background-color: #db7df7;
+            transform: scale(1.05);
+            box-shadow: 0 0 10px #db7df7;
+        }
+
+        /* Botão Próxima Pergunta */
+        #next-question {
+            margin-top: 20px;
+            background-color: #c300ff99;
+            color: white;
+            padding: 12px 24px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #next-question:hover {
+            background-color: #db7df7;
+            transform: translateY(-5px);
+            box-shadow: 0 0 10px #db7df7;
+        }
+
+        /* Ajuste Responsivo */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .quiz-container {
+                width: 95%;
+                padding: 20px;
+            }
+
+            .answer {
+                font-size: 1rem;
+                padding: 10px;
+            }
+
+            #next-question {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="overlay"></div>
+    
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="nav-content">
+            <div class="user-info">
+                <img src="user-icon.png" alt="Ícone do Usuário" id="user-avatar">
+                <span id="username">Usuário</span>
+            </div>
+            <div class="game-info">
+                <span id="category-name">Categoria: HTML</span>
+                <span id="score">Pontuação: 0</span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Contador de Tempo -->
+    <div id="timer">
+        <span id="time">60</span> segundos
+    </div>
+    
+    <div id="container">
+        <h1>Prepare-se para o Desafio!</h1>
+        
+        <div class="quiz-container">
+            <div id="category-icon"></div>
+            
+            <div class="question-box">
+                <p class="question-text">Qual tag HTML é usada para criar um link?</p>
+                <div class="answers-container">
+                    <button class="answer">&lt;a&gt;</button>
+                    <button class="answer">&lt;link&gt;</button>
+                    <button class="answer">&lt;href&gt;</button>
+                    <button class="answer">&lt;url&gt;</button>
+                </div>
+            </div>
+            
+            <button id="next-question">Próxima Pergunta</button>
+        </div>
+    </div>
+
+  </body>
+</html>
