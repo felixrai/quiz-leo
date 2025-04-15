@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,8 +39,8 @@
             top: 0;
             left: 0;
             z-index: 100;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);         
-}
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
 
 
         #navbar .nav-content {
@@ -47,8 +48,9 @@
             justify-content: space-between;
             width: 100%;
             align-items: center;
-            padding-right: 35px; /* Ajustando o padding na nav-content */
-}
+            padding-right: 35px;
+            /* Ajustando o padding na nav-content */
+        }
 
         /* Div do usuário */
         .user-info {
@@ -61,29 +63,32 @@
         #user-avatar {
             width: 40px;
             height: 40px;
-            border-radius: 50%;
+            border-radius: 20%;
             margin-right: 10px;
-            border: 2px solid #ffffff;
+            border: 0.5px solid #ffffff;
         }
 
-       /* Div de informações do jogo */
-.game-info {
-    display: flex;
-    gap: 30px;
-    color: #ffffff;
-    font-size: 1.2rem; /* Aumentei o tamanho da fonte aqui */
-    margin-right: 20px; /* Aumentando o afastamento da borda direita */
-}
+        /* Div de informações do jogo */
+        .game-info {
+            display: flex;
+            gap: 30px;
+            color: #ffffff;
+            font-size: 1.2rem;
+            /* Aumentei o tamanho da fonte aqui */
+            margin-right: 20px;
+            /* Aumentando o afastamento da borda direita */
+        }
 
-.game-info span {
-    font-weight: 500;
-}
+        .game-info span {
+            font-weight: 500;
+        }
 
 
         /* Contador de tempo */
         #timer {
             position: fixed;
-            top: 100px; /* Logo abaixo da navbar */
+            top: 100px;
+            /* Logo abaixo da navbar */
             right: 30px;
             background-color: rgba(45, 45, 45, 0.718);
             color: white;
@@ -97,7 +102,7 @@
             justify-content: center;
             z-index: 200;
         }
-        
+
 
         /* Container do Quiz */
         #container {
@@ -205,14 +210,15 @@
         }
     </style>
 </head>
+
 <body>
     <div id="overlay"></div>
-    
+
     <!-- Navbar -->
     <nav id="navbar">
         <div class="nav-content">
             <div class="user-info">
-                <img src="user-icon.png" alt="Ícone do Usuário" id="user-avatar">
+                <img src="REACODED (2) (1).png" alt="Ícone do Usuário" id="user-avatar">
                 <span id="username">Usuário</span>
             </div>
             <div class="game-info">
@@ -221,18 +227,18 @@
             </div>
         </div>
     </nav>
-    
+
     <!-- Contador de Tempo -->
     <div id="timer">
         <span id="time">60</span> segundos
     </div>
-    
+
     <div id="container">
         <h1>Prepare-se para o Desafio!</h1>
-        
+
         <div class="quiz-container">
             <div id="category-icon"></div>
-            
+
             <div class="question-box">
                 <p class="question-text">Qual tag HTML é usada para criar um link?</p>
                 <div class="answers-container">
@@ -242,10 +248,11 @@
                     <button class="answer">&lt;url&gt;</button>
                 </div>
             </div>
-            
+
             <button id="next-question">Próxima Pergunta</button>
         </div>
     </div>
 
-  </body>
+</body>
+
 </html>
